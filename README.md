@@ -13,3 +13,6 @@ real purchases. Download verification is in `cutback/downloads/SHA256SUMS.txt`.
 
 The existing `privacy.html` and `app-ads.txt` are retained at their original URLs.
 No advertising or analytics scripts are included in these website pages.
+
+The CutBack presentation supports English and Slovenian, with native 2.8.0
+screenshots and horizontal screenshot navigation on mobile.
