@@ -1,0 +1,34 @@
+name: Publish app pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'site.css'
+      - 'site.js'
+      - 'cutback/**'
+      - 'privacy.html'
+      - 'app-ads.txt'
+      - '.nojekyll'
+      - '.github/workflows/publish.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+
+concurrency:
+  group: request-app-pages-build
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Request a build of the current GitHub Pages source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
+
